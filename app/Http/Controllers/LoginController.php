@@ -17,18 +17,24 @@ class LoginController extends Controller
         return view('auth.login');
     }
 
-    public function store()
+    public function store () 
     {
-        $success = auth()->attempt([
+        if(!auth()->attempt([
             'email' => request('email'),
             'password' => request('password'),
-        ]);
-
-        if ($success) {
-            return redirect(('/'));
-        } else {
+        ])) {
             return back()->withErrors([
                 'message' => 'Pleas check you credentials.'
+            ]);
+        } 
+
+        if(auth()->user()->is_verified) {
+            return redirect()->route('teams.index');
+        } else {
+            $this->destroy();
+            
+            return back()->withErrors([
+                'message' => 'You are not verified, please check your email for verification!'
             ]);
         }
     }

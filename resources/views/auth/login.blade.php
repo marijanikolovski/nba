@@ -21,7 +21,7 @@
             <input type="password" class="form-control" name="password_confirmation"/>
         </div>
 
-        @error('message-except')
+        @error('message')
             @include('partials.error')
         @enderror
 

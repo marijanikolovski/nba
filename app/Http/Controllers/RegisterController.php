@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\CreateUserRequest;
+use App\Mail\MailVerified;
 use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Support\Facades\Mail;
 
 class RegisterController extends Controller
 {
@@ -30,10 +32,18 @@ class RegisterController extends Controller
 
         $user->save();
 
-        auth()->login($user);
+        Mail::to($user)->send(new MailVerified($user));
 
-        return redirect('/');
+        return redirect('/login');
     }
 
-    
+    public function update($id) 
+    {
+        $user = User::find($id);
+
+        $user->is_verified = true;
+        $user->save();
+
+        return view('auth.login', compact('user'));
+    }
 }
