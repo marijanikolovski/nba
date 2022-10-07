@@ -5,6 +5,7 @@ use App\Http\Controllers\PlayersControllers;
 use App\Http\Controllers\RegisterController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TeamsController;
+use App\Http\Controllers\CommentsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,6 +21,7 @@ use App\Http\Controllers\TeamsController;
 Route::get('/', [TeamsController::class, 'index']);
 
 Route::get('/teams/{id}', [TeamsController::class, 'show'])->name('teams-show');
+Route::post('/teams/{id}/comments', [CommentsController::class, 'store']);
 
 Route::get('/player/{id}', [PlayersControllers::class, 'show'])->name('players-show');
 
