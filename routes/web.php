@@ -21,7 +21,7 @@ use App\Http\Controllers\CommentsController;
 Route::get('/', [TeamsController::class, 'index']);
 
 Route::get('/teams/{id}', [TeamsController::class, 'show'])->name('teams-show');
-Route::post('/teams/{id}/comments', [CommentsController::class, 'store']);
+Route::post('/teams/{id}/comments', [CommentsController::class, 'store'])->middleware('words');
 
 Route::get('/player/{id}', [PlayersControllers::class, 'show'])->name('players-show');
 

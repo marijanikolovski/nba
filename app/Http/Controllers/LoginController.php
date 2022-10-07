@@ -11,7 +11,6 @@ class LoginController extends Controller
         $this->middleware('guest', ['except' => 'destroy']);
     }
 
-
     public function create()
     {
         return view('auth.login');
@@ -29,7 +28,7 @@ class LoginController extends Controller
         } 
 
         if(auth()->user()->is_verified) {
-            return redirect()->route('teams.index');
+            return redirect('/');
         } else {
             $this->destroy();
             
