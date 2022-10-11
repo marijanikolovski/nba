@@ -29,13 +29,13 @@ class LoginController extends Controller
 
         if(auth()->user()->is_verified) {
             return redirect('/');
-        } else {
-            $this->destroy();
-            
-            return back()->withErrors([
-                'message' => 'You are not verified, please check your email for verification!'
-            ]);
         }
+
+        $this->destroy();
+        
+        return back()->withErrors([
+            'message' => 'You are not verified, please check your email for verification!'
+        ]);
     }
 
     public function destroy()

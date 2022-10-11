@@ -6,6 +6,7 @@ use App\Http\Controllers\RegisterController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TeamsController;
 use App\Http\Controllers\CommentsController;
+use App\Http\Controllers\NewsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,18 +20,14 @@ use App\Http\Controllers\CommentsController;
 */
 
 Route::get('/', [TeamsController::class, 'index']);
-
 Route::get('/teams/{id}', [TeamsController::class, 'show'])->name('teams-show');
 Route::post('/teams/{id}/comments', [CommentsController::class, 'store'])->middleware('words');
-
 Route::get('/player/{id}', [PlayersControllers::class, 'show'])->name('players-show');
-
 Route::get('/register', [RegisterController::class, 'create']);
 Route::post('/register', [RegisterController::class, 'store']);
-
 Route::get('/logout', [LoginController::class, 'destroy']);
-
 Route::get('/login', [LoginController::class, 'create'])->name('login');
 Route::post('/login', [LoginController::class, 'store']);
-
 Route::get('/login/{id}', [RegisterController::class, 'update'])->name('verification');
+Route::get('/news', [NewsController::class, 'index']);
+Route::get('/news/{id}', [NewsController::class, 'show']);
