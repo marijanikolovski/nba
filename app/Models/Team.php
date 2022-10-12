@@ -19,6 +19,10 @@ class Team extends Model
         return $this->hasMany(Comment::class);
     }
 
+    public function news() {
+        return $this->belongsToMany(News::class, 'news_teams');
+    }
+
     public function addComment($content)
     {
             $this->comments()->create([    

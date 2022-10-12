@@ -17,7 +17,6 @@
                     </a>
                 </h2>
                 <p class="blog-post-meta">By <a href="#">{{ $novelty->user->name }}</a> on {{ $novelty->created_at }}</p>
-
                 <p>{{ $novelty->content }}</p>
             @endforeach
         </ul>

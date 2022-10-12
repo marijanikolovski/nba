@@ -12,8 +12,14 @@
         <div>
             <p class="blog-post-meta">By <a href="#">{{ $novelty->user->name }}</a> on {{ $novelty->created_at }}</p>
             <p>{{ $novelty->content }}</p>
-        </div>
+            <h4>Teams:</h4>
+            <ul>
+                @foreach ($novelty->teams as $team)
+                    <li>
+                        <a href="{{ route('teams-index', [ 'team' => $team ]) }}">{{ $team->name }}</a>
+                    </li>
+                @endforeach
+            </ul>
+    </div>
     </main><!-- /.container -->
-
-
 @endsection
