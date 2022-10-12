@@ -31,4 +31,6 @@ Route::post('/login', [LoginController::class, 'store']);
 Route::get('/login/{id}', [RegisterController::class, 'update'])->name('verification');
 Route::get('/news', [NewsController::class, 'index']);
 Route::get('news/teams/{team}', [NewsController::class , 'index'])->name('teams-index');
+Route::get('/news/create', [NewsController::class, 'create']);
+Route::post('/news', [NewsController::class, 'store']);
 Route::get('/news/{id}', [NewsController::class, 'show']);

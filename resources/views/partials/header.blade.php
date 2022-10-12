@@ -3,6 +3,7 @@
       <nav class="nav d-flex justify-content-between">
         <a class="p-2 text-muted" href="/">Teams</a>
         <a class="p-2 text-muted" href="/news">News</a>
+        <a class="p-2 text-muted" href="/news/create">Create News</a>
 
         @if (auth()->check())
         <p>{{ auth()->user()->name }}</p>

@@ -25,6 +25,12 @@
 
       @include('partials.header')
 
+      @if (session('message'))
+        <div class="alert alert-success">
+          {{ session('message') }}
+        </div>
+      @endif
+
       @yield('content')
 
       @include('partials.footer')
