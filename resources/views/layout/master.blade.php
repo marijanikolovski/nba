@@ -33,6 +33,10 @@
 
       @yield('content')
 
+      @if(auth()->user())
+      @include('partials.sidebar')
+      @endif
+
       @include('partials.footer')
     </div>
   </body>
